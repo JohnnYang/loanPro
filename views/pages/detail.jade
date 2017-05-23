@@ -1,0 +1,153 @@
+extends ../layout
+
+block content
+	.container
+		.row
+			input#hideKnowUsWaysOther(type="hidden",name="knowUsWaysOther",value="#{loan.knowUsWaysOther}")
+			input#hideVocationOther(type="hidden",name="vocationOther",value="#{loan.vocationOther}")
+			input#hideHouseProperYue(type="hidden",name="houseProperYue",value="#{loan.houseProperYue}")
+			input#hideHouseProper(type="hidden",value="#{loan.houseProper}")
+			input#hideVocation(type="hidden",value="#{loan.vocation}")
+			input#hideKnowUsWays(type="hidden",value="#{loan.knowUsWays}")
+
+			h2(style={'text-align':'center'}) 贷款客户信息统计表
+			table.table.table-hover.table-bordered(style={'width':'900px','margin-left':'150px','table-layout':'fixed','word-wrap':'break-word'})
+				thead
+					tbody
+						tr
+							td(style={'text-align':'left','width':'200px','font-size':'16px'}) 借款人姓名：#{loan.loanName}
+							td(style={'text-align':'left','width':'350px','font-size':'16px'}) 借款人身份证号：#{loan.loanID}
+							td(style={'text-align':'left','width':'250px','font-size':'16px'}) 业务性质：#{loan.busiProper}
+			table.table.table-hover.table-bordered(style={'width':'900px','margin-left':'150px','table-layout':'fixed','word-wrap':'break-word'})
+				thead
+					tr
+						td(colspan='8',style={'text-align':'center','background-color':'#D2E9FF','font-size':'20px','font-weight':'bold'}) 申请信息
+					tbody
+						tr
+							td(colspan='2',style={'text-align':'left','width':'200px','font-size':'16px'}) 贷款金额(万元)：#{loan.loanMoney}
+							td(colspan='2',style={'text-align':'left','width':'200px','font-size':'16px'}) 贷款期限(月)：#{loan.loanTime}
+							td(colspan='4',style={'text-align':'left','width':'600px','font-size':'16px'}) 贷款产品：#{loan.loanProduct}
+						tr
+							td(colspan='8',style={'font-size':'16px'}) 贷款用途及还款来源：#{loan.loanUsing}
+			table.table.table-hover.table-bordered(style={'width':'900px','margin-left':'150px','table-layout':'fixed','word-wrap':'break-word'})
+				thead
+					tr
+						td(colspan='32',style={'width':'800px','text-align':'center','background-color':'#D2E9FF','font-size':'20px','font-weight':'bold'}) 个人及家庭信息
+					tbody
+						tr
+							td(colspan='8',style={'text-align':'left','width':'200px','font-size':'16px'}) 出生日期：#{loan.birthDate}
+							td(colspan='6',style={'text-align':'left','width':'200px','font-size':'16px'}) 性别：#{loan.sex}
+							td(colspan='10',style={'text-align':'left','width':'200px','font-size':'16px'}) 户籍所在地：#{loan.huji}
+							td(colspan='8',style={'text-align':'left','width':'200px','font-size':'16px'}) 在青居住年限：#{loan.timeInQD}	
+						tr
+							td(colspan='32',style={'text-align':'left','width':'800px','font-size':'16px'}) 现居住地址：#{loan.location}
+						tr
+							td.houseProper(colspan='14',style={'text-align':'left','width':'400px','font-size':'16px'})
+							td(colspan='10',style={'text-align':'left','width':'300px','font-size':'16px'}) 婚姻状况：#{loan.maritalStatus}
+							td(colspan='8',style={'text-align':'left','width':'100px','font-size':'16px'}) 家庭人数：#{loan.familyNum}
+						tr
+							td(colspan='8',style={'text-align':'left','width':'300px','font-size':'16px'}) 移动电话：#{loan.mobilePhone}
+							td(colspan='12',style={'text-align':'left','width':'300px','font-size':'16px'}) 固定电话：#{loan.fixedPhone}
+							td(colspan='12',style={'text-align':'left','width':'200px','font-size':'16px'}) 其他联系方式：#{loan.otherContact}
+						tr
+							td(colspan='32',style={'text-align':'left','width':'800px','font-size':'16px'}) 教育程度：#{loan.eduLevel}
+						tr
+							td(colspan='19',style={'text-align':'left','width':'400px','font-size':'16px'}) 工作单位：#{loan.workUnit}
+							td(colspan='13',style={'text-align':'left','width':'400px','font-size':'16px'}) 工作年限：#{loan.workTime}
+						tr
+							td(colspan='19',style={'text-align':'left','width':'400px','font-size':'16px'}) 职务：#{loan.workDuties}
+							td(colspan='13',style={'text-align':'left','width':'400px','font-size':'16px'}) 公司电话：#{loan.workPhone}
+						tr(style={'background':'#ECF5FF'})
+							td(colspan='4',style={'text-align':'center','width':'100px','font-size':'16px','font-weight':'bold'}) 配偶姓名
+							td(colspan='7',style={'text-align':'center','width':'200px','font-size':'16px','font-weight':'bold'}) 身份证号码
+							td(colspan='8',style={'text-align':'center','width':'200px','font-size':'16px','font-weight':'bold'}) 工作单位
+							td(colspan='7',style={'text-align':'center','width':'200px','font-size':'16px','font-weight':'bold'}) 现有职务
+							td(colspan='6',style={'text-align':'center','width':'100px','font-size':'16px','font-weight':'bold'}) 联系电话
+						tr
+							td(colspan='4',style={'text-align':'center','width':'100px','font-size':'16px'}) #{loan.spouseName}
+							td(colspan='7',style={'text-align':'center','width':'200px','font-size':'16px'}) #{loan.spouseID}
+							td(colspan='8',style={'text-align':'center','width':'200px','font-size':'16px'}) #{loan.spouseUnit}
+							td(colspan='7',style={'text-align':'center','width':'200px','font-size':'16px'}) #{loan.spouseDuties}
+							td(colspan='6',style={'text-align':'center','width':'100px','font-size':'16px'}) #{loan.spousePhone}
+						tr(style={'background':'#ECF5FF'})
+							td(colspan='4',style={'text-align':'center','width':'100px','font-size':'16px','font-weight':'bold'}) 家庭其他成员姓名
+							td(colspan='7',style={'text-align':'center','width':'200px','font-size':'16px','font-weight':'bold'}) 与借款人的关系
+							td(colspan='8',style={'text-align':'center','width':'200px','font-size':'16px','font-weight':'bold'}) 工作单位/现有职务
+							td(colspan='7',style={'text-align':'center','width':'200px','font-size':'16px','font-weight':'bold'}) 现住址
+							td(colspan='6',style={'text-align':'center','width':'100px','font-size':'16px','font-weight':'bold'}) 联系电话
+						tr
+							td(colspan='4',style={'text-align':'center','width':'100px','font-size':'16px'}) #{loan.otherName1}
+							td(colspan='7',style={'text-align':'center','width':'200px','font-size':'16px'}) #{loan.otherRelation1}
+							td(colspan='8',style={'text-align':'center','width':'200px','font-size':'16px'}) #{loan.otherUnit1}
+							td(colspan='7',style={'text-align':'center','width':'200px','font-size':'16px'}) #{loan.otherLocation1}
+							td(colspan='6',style={'text-align':'center','width':'100px','font-size':'16px'}) #{loan.otherPhone1}
+						tr
+							td(colspan='4',style={'text-align':'center','width':'100px','font-size':'16px'}) #{loan.otherName2}
+							td(colspan='7',style={'text-align':'center','width':'200px','font-size':'16px'}) #{loan.otherRelation2}
+							td(colspan='8',style={'text-align':'center','width':'200px','font-size':'16px'}) #{loan.otherUnit2}
+							td(colspan='7',style={'text-align':'center','width':'200px','font-size':'16px'}) #{loan.otherLocation2}
+							td(colspan='6',style={'text-align':'center','width':'100px','font-size':'16px'}) #{loan.otherPhone2}
+						tr
+							td(colspan='4',style={'text-align':'center','width':'100px','font-size':'16px'}) #{loan.otherName3}
+							td(colspan='7',style={'text-align':'center','width':'200px','font-size':'16px'}) #{loan.otherRelation3}
+							td(colspan='8',style={'text-align':'center','width':'200px','font-size':'16px'}) #{loan.otherUnit3}
+							td(colspan='7',style={'text-align':'center','width':'200px','font-size':'16px'}) #{loan.otherLocation3}
+							td(colspan='6',style={'text-align':'center','width':'100px','font-size':'16px'}) #{loan.otherPhone3}
+			table.table.table-hover.table-bordered(style={'width':'900px','margin-left':'150px','table-layout':'fixed','word-wrap':'break-word'})
+				thead
+					tr
+						td(colspan='16',style={'width':'800px','text-align':'center','background-color':'#D2E9FF','font-size':'20px','font-weight':'bold'}) 经营信息
+					tbody
+						tr
+							td(colspan='5',style={'text-align':'left','width':'200px','font-size':'16px'}) 经营实体名称：#{loan.busiName}
+							td(colspan='11',style={'text-align':'left','width':'400px','font-size':'16px'}) 经营产品：#{loan.busiProduct}
+						tr
+							td(colspan='5',style={'text-align':'left','width':'200px','font-size':'16px'}) 经营地址：#{loan.busiAddress}
+							td(colspan='4',style={'text-align':'left','width':'200px','font-size':'16px'}) 经营年限：#{loan.busiTime}
+							td(colspan='7',style={'text-align':'left','width':'200px','font-size':'16px'}) 股权结构：#{loan.ownership}
+						tr
+							td(colspan='5',style={'text-align':'left','width':'200px','font-size':'16px'}) 员工人数：#{loan.workerNum}
+							td(colspan='4',style={'text-align':'left','width':'200px','font-size':'16px'}) 经营场地面积：#{loan.busiArea}
+							td(colspan='4',style={'text-align':'left','width':'100px','font-size':'16px'}) 管理层主要人员：#{loan.mgtPerson}
+							td(colspan='3',style={'text-align':'left','width':'100px','font-size':'16px'}) 联系方式：#{loan.mgtContact}
+						tr
+							td(colspan='5',style={'text-align':'left','width':'200px','font-size':'16px'}) 最近两年总投资额：#{loan.investAmount}
+							td(colspan='4',style={'text-align':'left','width':'100px','font-size':'16px'}) 利润率：#{loan.rate}
+							td(colspan='7',style={'text-align':'left','width':'300px','font-size':'16px'}) 现阶段月均销售规模：#{loan.saleScale}
+						tr
+							td(colspan='8',style={'text-align':'left','width':'200px','font-size':'16px'}) 上游主要客户：#{loan.shangyou}
+							td(colspan='8',style={'text-align':'left','width':'400px','font-size':'16px'}) 下游主要客户：#{loan.xiayou}
+						tr
+							td(colspan='8',style={'text-align':'left','width':'200px','font-size':'16px'}) 上游客户联系方式：#{loan.shangyouPhone}
+							td(colspan='8',style={'text-align':'left','width':'400px','font-size':'16px'}) 上游客户联系方式：#{loan.xiayouPhone}
+						tr
+							td.vocation(colspan='16',style={'text-align':'left','width':'600px','font-size':'16px'})
+			table.table.table-hover.table-bordered(style={'width':'900px','margin-left':'150px','table-layout':'fixed','word-wrap':'break-word'})
+				thead
+					tr
+						td(colspan='16',style={'width':'800px','text-align':'center','background-color':'#D2E9FF','font-size':'20px','font-weight':'bold'}) 信贷记录
+					tbody
+						tr(style={'border':'0'})
+							td(colspan='3',style={'text-align':'left','width':'100px'}) 银行贷款(万元)：#{loan.bankLoan}
+							td(colspan='5',style={'text-align':'left','width':'300px'}) 小贷公司和民间借款金额(万元)：#{loan.xiaoeLoan}
+							td(colspan='5',style={'text-align':'left','width':'200px'}) 资产情况：#{loan.assetSituation}
+							td(colspan='3',style={'text-align':'left','width':'200px'}) 资产负债率：#{loan.assetRatio}
+						tr(style={'border':'0'})
+							td(colspan='3',style={'text-align':'left','width':'200px'}) 保证方式：#{loan.bankGuaran}
+							td(colspan='5',style={'text-align':'left','width':'200px'}) 保证方式：#{loan.xiaoeGuaran}
+							td(colspan='5',style={'text-align':'left','width':'200px'})
+							td(colspan='3',style={'text-align':'left','width':'200px'}) 征信记录：#{loan.creditRecord}
+			table.table.table-hover.table-bordered(style={'width':'900px','margin-left':'150px','table-layout':'fixed','word-wrap':'break-word'})
+				thead
+					tr
+						td.knowUsWays(colspan='5',style={'text-align':'left','width':'800px'})
+					tbody
+						tr
+							td(colspan='5',style={'width':'800px','text-align':'center','background-color':'#D2E9FF','font-size':'20px','font-weight':'bold'}) 成功申请贷款记录
+						tr
+							td(style={'text-align':'left','width':'200px'}) 放款时间：#{loan.lendingTime}
+							td(style={'text-align':'left','width':'200px'}) 批款额度：#{loan.lendingQuota}
+							td(style={'text-align':'left','width':'200px'}) 放款方：#{loan.lendingSide}
+							td(style={'text-align':'left','width':'200px'}) 客户经理：#{loan.cusMger}
+							td(style={'text-align':'left','width':'200px'}) 备注：#{loan.comment}
+	script(src='/js/detail.js')

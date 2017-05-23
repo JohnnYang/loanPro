@@ -1,0 +1,67 @@
+extends ../layout
+
+block content
+	.container
+		.row
+			input#hideRecordCount(type="hidden",value="#{recordCount}")
+			input#hideCurrentPage(type="hidden",value="#{currentPage}")
+			.col-md-2
+				button.btn.btn-info(type="button",style={'margin-left':'45px'},onclick="window.open('../loanIn')") 信息录入
+			.col-md-9
+				.container-fluid(style={'float':'left'})
+					form.searchForm(method="post", action="/")
+						input.inputSearch.form-control(type="text",style={'margin-left':'-16px','width':'130px','float':'left'},placeholder="借款人姓名",name="loanName",value="#{searchCondition}")
+						button.btn.search(type="submit",style={'margin-left':'10px'}) 搜索
+				.btn-group(style={'margin-left':'526px'})
+					button.btn.btn-warning(type="button") 导出Excel
+					button.btn.btn-warning.dropdown-toggle(type="button",data-toggle="dropdown",aria-haspopup="true",aria-expanded="false")
+						span.caret
+						span.sr-only Toggle Dropdown
+					ul.dropdown-menu
+						li
+							a(href='../Excel/?searchCondition=#{searchCondition}&currentPage=#{currentPage}') 当前页
+						li
+							a(href="../Excel/?searchCondition=#{searchCondition}") 全部页
+				table.table.table-hover.table-bordered.table-striped(style={'table-layout':'fixed','margin-top':'15px'})
+					thead
+						tr
+							th(style={'width':'90px','text-align':'center'}) 借款人姓名
+							th(style={'width':'80px','text-align':'center'}) 业务性质
+							th(style={'width':'80px','text-align':'center'}) 贷款金额(万元)
+							th(style={'width':'80px','text-align':'center'}) 贷款期限(月)
+							th(style={'width':'80px','text-align':'center'}) 放款时间
+							th(style={'width':'80px','text-align':'center'}) 批款额度
+							th(style={'width':'80px','text-align':'center'}) 放款方
+							th(style={'width':'80px','text-align':'center'}) 客户经理
+							th(style={'width':'90px','text-align':'center'}) 录入日期
+							th(style={'width':'70px','text-align':'center'}) 查看
+							th(style={'width':'70px','text-align':'center'}) 更新
+							th(style={'width':'70px','text-align':'center'}) 删除
+						tbody.tableTbody
+							each item in loans
+								tr(class="item-id-#{item._id}")
+									td(style={'word-wrap':'break-word'}) #{item.loanName}
+									td(style={'word-wrap':'break-word'}) #{item.busiProper}
+									td(style={'word-wrap':'break-word'}) #{item.loanMoney}
+									td(style={'word-wrap':'break-word'}) #{item.loanTime}
+									td(style={'word-wrap':'break-word'}) #{item.lendingTime}
+									td(style={'word-wrap':'break-word'}) #{item.lendingQuota}
+									td(style={'word-wrap':'break-word'}) #{item.lendingSide}
+									td(style={'word-wrap':'break-word'}) #{item.cusMger}
+									td(style={'text-align':'center'}) #{moment(item.meta.updateAt).format('YYYY/MM/DD')}
+									td(style={'text-align':'center'}): a(target="_blank", href="../loan/#{item._id}") 查看
+									td(style={'text-align':'center'}): a(target="_blank", href="../update/#{item._id}") 修改
+									td(style={'text-align':'center'})
+										button.ben.btn-danger.del(type="button", data-id="#{item._id}") 删除
+				ul.pagination#pagination(style={'margin-left':'300px'})
+
+	script(src='/js/index.js')
+
+
+
+
+
+
+
+//-值得收藏
+//-button.btn.btn-info(type="button",onclick="location.href='../Excel'") 导出

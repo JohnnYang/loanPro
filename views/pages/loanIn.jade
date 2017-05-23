@@ -1,0 +1,453 @@
+extends ../layout
+
+block content
+	.container
+		.row
+			h2(style={'text-align':'center'}) 贷款客户信息录入
+			input#hideBusiProper(type="hidden",value="#{loan.busiProper}")
+			input#hideLoanProduct(type="hidden",value="#{loan.loanProduct}")
+			input#hideHouseProper(type="hidden",value="#{loan.houseProper}")
+			input#hideMaritalStatus(type="hidden",value="#{loan.maritalStatus}")
+			input#hideEduLevel(type="hidden",value="#{loan.eduLevel}")
+			input#hideOwnership(type="hidden",value="#{loan.ownership}")
+			input#hideVocation(type="hidden",value="#{loan.vocation}")
+			input#hideCreditRecord(type="hidden",value="#{loan.creditRecord}")
+			input#hideKnowUsWays(type="hidden",value="#{loan.knowUsWays}")
+			input#hideSex(type="hidden",value="#{loan.sex}")
+
+			form.form-horizontal(method="post", action="/loan/new", onsubmit="preSubmit()")
+				input#hideSpouseName(type="hidden",name="spouseName",value="#{loan.spouseName}")
+				input#hideSpouseID(type="hidden",name="spouseID",value="#{loan.spouseID}")
+				input#hideSpouseUnit(type="hidden",name="spouseUnit",value="#{loan.spouseUnit}")
+				input#hideSpouseDuties(type="hidden",name="spouseDuties",value="#{loan.spouseDuties}")
+				input#hideSpousePhone(type="hidden",name="spousePhone",value="#{loan.spousePhone}")
+				input#hideOtherName1(type="hidden",name="otherName1",value="#{loan.otherName1}")
+				input#hideOtherRelation1(type="hidden",name="otherRelation1",value="#{loan.otherRelation1}")
+				input#hideOtherUnit1(type="hidden",name="otherUnit1",value="#{loan.otherUnit1}")
+				input#hideOtherLocation1(type="hidden",name="otherLocation1",value="#{loan.otherLocation1}")
+				input#hideOtherPhone1(type="hidden",name="otherPhone1",value="#{loan.otherPhone1}")
+				input#hideOtherName2(type="hidden",name="otherName2",value="#{loan.otherName2}")
+				input#hideOtherRelation2(type="hidden",name="otherRelation2",value="#{loan.otherRelation2}")
+				input#hideOtherUnit2(type="hidden",name="otherUnit2",value="#{loan.otherUnit2}")
+				input#hideOtherLocation2(type="hidden",name="otherLocation2",value="#{loan.otherLocation2}")
+				input#hideOtherPhone2(type="hidden",name="otherPhone2",value="#{loan.otherPhone2}")
+				input#hideOtherName3(type="hidden",name="otherName3",value="#{loan.otherName3}")
+				input#hideOtherRelation3(type="hidden",name="otherRelation3",value="#{loan.otherRelation3}")
+				input#hideOtherUnit3(type="hidden",name="otherUnit3",value="#{loan.otherUnit3}")
+				input#hideOtherLocation3(type="hidden",name="otherLocation3",value="#{loan.otherLocation3}")
+				input#hideOtherPhone3(type="hidden",name="otherPhone3",value="#{loan.otherPhone3}")
+
+				input(type="hidden", name="_id", value="#{loan._id}")
+				h3 基本信息
+					span.glyphicon.glyphicon-menu-down
+				hr.line
+				.form-group
+					label.col-sm-3.control-label(for="inputLoanName") 借款人姓名:
+					.col-sm-2
+						input#inputLoanName.form-control(type="text", name="loanName", value="#{loan.loanName}")
+					label.col-sm-3.control-label(for="inputLoanID") 借款人身份证号:
+					.col-sm-2
+						input#inputLoanID.form-control(type="text", name="loanID", value="#{loan.loanID}")
+				.form-group
+					label.col-sm-3.control-label(for="inputTitle") 业务性质:
+					.checkbox
+						label(style={'margin-left':'16px'})
+							input(type="checkbox",style={'margin-top':'0px','width':'18px','height':'18px'},name="busiProper",value="新增")
+							| 新增
+						label(style={'margin-left':'10px'})
+							input(type="checkbox",style={'margin-top':'0px','width':'18px','height':'18px'},name="busiProper",value="续贷")
+							| 续贷
+				h3 申请信息
+					span.glyphicon.glyphicon-menu-down
+				hr.line
+				.form-group
+					label.col-sm-3.control-label(for="inputLoanMoney") 贷款金额（万元）:
+					.col-sm-2
+						input#inputLoanMoney.form-control(type="text", name="loanMoney", value="#{loan.loanMoney}")
+					label.col-sm-3.control-label(for="inputLoanTime") 贷款期限（月）:
+					.col-sm-2
+						input#inputLoanTime.form-control(type="text", name="loanTime", value="#{loan.loanTime}")
+				.form-group
+					label.col-sm-3.control-label(for="inputTitle") 贷款产品:
+					.checkbox
+						label(style={'margin-left':'16px'})
+							input(type="checkbox",style={'margin-top':'0px','width':'18px','height':'18px'},name="loanProduct",value="土地、房产一押")
+							| 土地、房产一押
+						label(style={'margin-left':'10px'})
+							input(type="checkbox",style={'margin-top':'0px','width':'18px','height':'18px'},name="loanProduct",value="土地、房产二押")
+							| 土地、房产二押
+						label(style={'margin-left':'10px'})
+							input(type="checkbox",style={'margin-top':'0px','width':'18px','height':'18px'},name="loanProduct",value="股权质押")
+							| 股权质押
+						label(style={'margin-left':'10px'})
+							input(type="checkbox",style={'margin-top':'0px','width':'18px','height':'18px'},name="loanProduct",value="车辆抵押")
+							| 车辆抵押
+						label(style={'margin-left':'10px'})
+							input(type="checkbox",style={'margin-top':'0px','width':'18px','height':'18px'},name="loanProduct",value="信用")
+							| 信用
+						label(style={'margin-left':'10px'})
+							input(type="checkbox",style={'margin-top':'0px','width':'18px','height':'18px'},name="loanProduct",value="担保")
+							| 担保
+				.form-group
+					label.col-sm-3.control-label(for="inputLoanUsing") 贷款用途及还款来源:
+					.col-sm-7
+						textarea#inputLoanUsing.form-control(name="loanUsing",value="#{loan.loanUsing}") #{loan.loanUsing}
+				h3 个人及家庭信息
+					span.glyphicon.glyphicon-menu-down
+				hr.line
+				.form-group
+					label.col-sm-3.control-label(for="inputBirthDate") 出生日期:
+					.col-sm-2
+						input#inputBirthDate.form-control(type="text", name="birthDate", value="#{loan.birthDate}")
+					label.col-sm-3.control-label(for="inputTitle") 性别:
+					.radio(style={'margin-left':'800px'})
+						label(style={'margin-left':'16px'})
+							input(type="radio",style={'margin-top':'0px','width':'18px','height':'18px'},name="sex",value="男")
+							| 男
+						label(style={'margin-left':'10px'})
+							input(type="radio",style={'margin-top':'0px','width':'18px','height':'18px'},name="sex",value="女")
+							| 女
+				.form-group
+					label.col-sm-3.control-label(for="inputTimeInQD") 在青居住年限:
+					.col-sm-2
+						input#inputTimeInQD.form-control(type="text", name="timeInQD", value="#{loan.timeInQD}")
+					label.col-sm-3.control-label(for="inputHuji") 户籍所在地址:
+					.col-sm-2
+						input#inputHuji.form-control(type="text", name="huji", value="#{loan.huji}")
+				.form-group
+					label.col-sm-3.control-label(for="inputLocation") 现居住地址:
+					.col-sm-7
+						textarea#inputLocation.form-control(name="location",value="#{loan.location}") #{loan.location}
+				.form-group
+					label.col-sm-3.control-label(for="inputTitle") 现住房性质:
+					.checkbox
+						label(style={'margin-left':'16px'})
+							input(type="checkbox",style={'margin-top':'0px','width':'18px','height':'18px'},name="houseProper",value="全款自置")
+							| 全款自置
+						label(style={'margin-left':'10px'})
+							input(type="checkbox",style={'margin-top':'0px','width':'18px','height':'18px'},name="houseProper",value="按揭")
+							| 按揭
+						label(style={'margin-left':'10px'})
+							input(type="checkbox",style={'margin-top':'0px','width':'18px','height':'18px'},name="houseProper",value="租用")
+							| 租用（期限:
+						input#inputHouseProperYue(type="text",style={'border-bottom':'#666 1px solid','border-left-width':'0px','border-right-width':'0px','border-top-width':'0px','width':'30px'},name="houseProperYue",value="#{loan.houseProperYue}")
+						label(style={'margin-left':'-20px','width':'30px'}) 月）
+						label(style={'margin-left':'10px'})
+							input(type="checkbox",style={'margin-top':'0px','width':'18px','height':'18px'},name="houseProper",value="其他")
+							| 其他
+				.form-group
+					label.col-sm-3.control-label(for="inputFamilyNum") 家庭人数:
+					.col-sm-2
+						input#inputFamilyNum.form-control(type="text", name="familyNum", value="#{loan.familyNum}")
+					label.col-sm-3.control-label(for="inputTitle") 婚姻状况:
+					.checkbox(style={'margin-left':'600px'})
+						label
+							input(type="checkbox",style={'margin-top':'0px','width':'18px','height':'18px'},name="maritalStatus",value="未婚")
+							| 未婚
+						label(style={'margin-left':'5px'})
+							input(type="checkbox",style={'margin-top':'0px','width':'18px','height':'18px'},name="maritalStatus",value="已婚")
+							| 已婚
+						label(style={'margin-left':'5px'})
+							input(type="checkbox",style={'margin-top':'0px','width':'18px','height':'18px'},name="maritalStatus",value="离异")
+							| 离异
+						label(style={'margin-left':'5px'})
+							input(type="checkbox",style={'margin-top':'0px','width':'18px','height':'18px'},name="maritalStatus",value="丧偶")
+							| 丧偶
+				.form-group
+					label.col-sm-3.control-label(for="inputMobilePhone") 移动电话:
+					.col-sm-2(style={'width':'150px'})
+						input#inputMobilePhone.form-control(type="text", name="mobilePhone", value="#{loan.mobilePhone}")
+					label.col-sm-2.control-label(style={'width':'95px'},for="inputFixedPhone") 固定电话:
+					.col-sm-2(style={'width':'160px'})
+						input#inputFixedPhone.form-control(type="text", name="fixedPhone", value="#{loan.fixedPhone}")
+					label.col-sm-2.control-label(style={'width':'125px'},for="inputOtherContact") 其他联系方式:
+					.col-sm-2(style={'margin-left':'-20px'})
+						input#inputOtherContact.form-control(type="text", name="otherContact", value="#{loan.otherContact}")
+				.form-group
+					label.col-sm-3.control-label(for="inputTitle") 教育程度:
+					.checkbox
+						label(style={'margin-left':'16px'})
+							input(type="checkbox",style={'margin-top':'0px','width':'18px','height':'18px'},name="eduLevel",value="研究生及以上")
+							| 研究生及以上
+						label(style={'margin-left':'5px'})
+							input(type="checkbox",style={'margin-top':'0px','width':'18px','height':'18px'},name="eduLevel",value="本科")
+							| 本科
+						label(style={'margin-left':'5px'})
+							input(type="checkbox",style={'margin-top':'0px','width':'18px','height':'18px'},name="eduLevel",value="专科")
+							| 专科
+						label(style={'margin-left':'5px'})
+							input(type="checkbox",style={'margin-top':'0px','width':'18px','height':'18px'},name="eduLevel",value="高中")
+							| 高中
+						label(style={'margin-left':'5px'})
+							input(type="checkbox",style={'margin-top':'0px','width':'18px','height':'18px'},name="eduLevel",value="初中")
+							| 初中
+						label(style={'margin-left':'5px'})
+							input(type="checkbox",style={'margin-top':'0px','width':'18px','height':'18px'},name="eduLevel",value="小学")
+							| 小学
+						label(style={'margin-left':'5px'})
+							input(type="checkbox",style={'margin-top':'0px','width':'18px','height':'18px'},name="eduLevel",value="未受教育")
+							| 未受教育
+						label(style={'margin-left':'5px'})
+							input(type="checkbox",style={'margin-top':'0px','width':'18px','height':'18px'},name="eduLevel",value="其他")
+							| 其他
+				.form-group
+					label.col-sm-3.control-label(for="inputWorkUnit") 工作单位:
+					.col-sm-4
+						input#inputWorkUnit.form-control(type="text", name="workUnit", value="#{loan.workUnit}")
+					label.col-sm-1.control-label(for="inputWorkTime") 工作年限:
+					.col-sm-2
+						input#inputWorkTime.form-control(type="text", name="workTime", value="#{loan.workTime}",style={'width':'180px'})
+				.form-group
+					label.col-sm-3.control-label(for="inputWorkDuties") 职务:
+					.col-sm-4
+						input#inputWorkDuties.form-control(type="text", name="workDuties", value="#{loan.workDuties}")
+					label.col-sm-1.control-label(for="inputWorkPhone") 公司电话:
+					.col-sm-2
+						input#inputWorkPhone.form-control(type="text", name="workPhone", value="#{loan.workPhone}",style={'width':'180px'})
+				.form-group
+					table.table.table-hover.table-bordered.table-striped(style={'width':'820px','margin-left':'190px','table-layout':'fixed'})
+						thead
+							tr
+								th(style={'text-align':'center','width':'100px'}) 配偶姓名
+								th(style={'text-align':'center'}) 身份证号
+								th(style={'text-align':'center','width':'230px'}) 工作单位
+								th(style={'text-align':'center'}) 现有职务
+								th(style={'text-align':'center'}) 联系电话
+							tbody
+								tr
+									td(style={'text-align':'center'})
+										.spouseName(contenteditable="true")
+									td(style={'text-align':'center'})
+										.spouseID(contenteditable="true")
+									td(style={'text-align':'center'})
+										.spouseUnit(contenteditable="true")
+									td(style={'text-align':'center'})
+										.spouseDuties(contenteditable="true")
+									td(style={'text-align':'center'})
+										.spousePhone(contenteditable="true")
+				.form-group
+					table.table.table-hover.table-bordered.table-striped(style={'width':'820px','margin-left':'190px','table-layout':'fixed'})
+						thead
+							tr
+								th(style={'text-align':'center','width':'100px'}) 家庭其他成员姓名
+								th(style={'text-align':'center'}) 与借款人的关系
+								th(style={'text-align':'center','width':'230px'}) 工作单位/现有职务
+								th(style={'text-align':'center'}) 现住址
+								th(style={'text-align':'center'}) 联系电话
+							tbody
+								tr
+									td(style={'text-align':'center'})
+										.otherName1(contenteditable="true")
+									td(style={'text-align':'center'})
+										.otherRelation1(contenteditable="true")
+									td(style={'text-align':'center'})
+										.otherUnit1(contenteditable="true")
+									td(style={'text-align':'center'})
+										.otherLocation1(contenteditable="true")
+									td(style={'text-align':'center'})
+										.otherPhone1(contenteditable="true")
+								tr
+									td(style={'text-align':'center'})
+										.otherName2(contenteditable="true")
+									td(style={'text-align':'center'})
+										.otherRelation2(contenteditable="true")
+									td(style={'text-align':'center'})
+										.otherUnit2(contenteditable="true")
+									td(style={'text-align':'center'})
+										.otherLocation2(contenteditable="true")
+									td(style={'text-align':'center'})
+										.otherPhone2(contenteditable="true")
+								tr
+									td(style={'text-align':'center'})
+										.otherName3(contenteditable="true")
+									td(style={'text-align':'center'})
+										.otherRelation3(contenteditable="true")
+									td(style={'text-align':'center'})
+										.otherUnit3(contenteditable="true")
+									td(style={'text-align':'center'})
+										.otherLocation3(contenteditable="true")
+									td(style={'text-align':'center'})
+										.otherPhone3(contenteditable="true")
+				h3 经营信息
+					span.glyphicon.glyphicon-menu-down
+				hr.line
+				.form-group
+					label.col-sm-3.control-label(for="inputBusiName") 经营实体名称:
+					.col-sm-2
+						input#inputBusiName.form-control(type="text", name="busiName", value="#{loan.busiName}")
+					label.col-sm-3.control-label(for="inputBusiProduct") 经营产品:
+					.col-sm-2
+						input#inputBusiProduct.form-control(type="text", name="busiProduct", value="#{loan.busiProduct}")
+				.form-group
+					label.col-sm-3.control-label(for="inputBusiAddress") 经营地址:
+					.col-sm-2
+						input#inputBusiAddress.form-control(type="text", name="busiAddress", value="#{loan.busiAddress}")
+					label.col-sm-3.control-label(for="inputBusiTime") 经营年限:
+					.col-sm-2
+						input#inputBusiTime.form-control(type="text", name="busiTime", value="#{loan.busiTime}")
+				.form-group
+					label.col-sm-3.control-label(for="inputTitle") 股权结构:
+					.checkbox
+						label(style={'margin-left':'16px'})
+							input(type="checkbox",style={'margin-top':'0px','width':'18px','height':'18px'},name="ownership",value="个人独资")
+							| 个人独资
+						label(style={'margin-left':'10px'})
+							input(type="checkbox",style={'margin-top':'0px','width':'18px','height':'18px'},name="ownership",value="家庭所有")
+							| 家庭所有
+						label(style={'margin-left':'10px'})
+							input(type="checkbox",style={'margin-top':'0px','width':'18px','height':'18px'},name="ownership",value="与他人共有")
+							| 与他人共有
+				.form-group
+					label.col-sm-3.control-label(for="inputWorkerNum") 员工人数:
+					.col-sm-2
+						input#inputWorkerNum.form-control(type="text", name="workerNum", value="#{loan.workerNum}")
+					label.col-sm-3.control-label(for="inputBusiArea") 经营场地面积:
+					.col-sm-2
+						input#inputBusiArea.form-control(type="text", name="busiArea", value="#{loan.busiArea}")
+				.form-group
+					label.col-sm-3.control-label(for="inputMgtPerson") 管理层主要人员:
+					.col-sm-2
+						input#inputMgtPerson.form-control(type="text", name="mgtPerson", value="#{loan.mgtPerson}")
+					label.col-sm-3.control-label(for="inputMgtContact") 管理层联系方式:
+					.col-sm-2
+						input#inputMgtContact.form-control(type="text", name="mgtContact", value="#{loan.mgtContact}")
+				.form-group
+					label.col-sm-3.control-label(for="inputInvestAmount") 最近两年总投资额:
+					.col-sm-2
+						input#inputInvestAmount.form-control(type="text", name="investAmount", value="#{loan.investAmount}")
+					label.col-sm-3.control-label(for="inputRate") 利润率:
+					.col-sm-2
+						input#inputRate.form-control(type="text", name="rate", value="#{loan.rate}")
+				.form-group
+					label.col-sm-3.control-label(for="inputSaleScale") 现阶段月均销售规模:
+					.col-sm-2
+						input#inputSaleScale.form-control(type="text", name="saleScale", value="#{loan.saleScale}")
+				.form-group
+					label.col-sm-3.control-label(for="inputShangyou") 上游主要客户:
+					.col-sm-2
+						input#inputShangyou.form-control(type="text", name="shangyou", value="#{loan.shangyou}")
+					label.col-sm-3.control-label(for="inputShangyouPhone") 上游客户联系方式:
+					.col-sm-2
+						input#inputShangyouPhone.form-control(type="text", name="shangyouPhone", value="#{loan.shangyouPhone}")
+				.form-group
+					label.col-sm-3.control-label(for="inputXiayou") 下游主要客户:
+					.col-sm-2
+						input#inputXiayou.form-control(type="text", name="xiayou", value="#{loan.xiayou}")
+					label.col-sm-3.control-label(for="inputXiayouPhone") 下游客户联系方式:
+					.col-sm-2
+						input#inputXiayouPhone.form-control(type="text", name="xiayouPhone", value="#{loan.xiayouPhone}")
+				.form-group
+					label.col-sm-3.control-label 行业:
+					.checkbox
+						label(style={'margin-left':'16px'})
+							input(type="checkbox",style={'margin-top':'0px','width':'18px','height':'18px'},name="vocation",value="生产制造业")
+							| 生产制造业
+						label(style={'margin-left':'5px'})
+							input(type="checkbox",style={'margin-top':'0px','width':'18px','height':'18px'},name="vocation",value="商业贸易")
+							| 商业贸易
+						label(style={'margin-left':'5px'})
+							input(type="checkbox",style={'margin-top':'0px','width':'18px','height':'18px'},name="vocation",value="物流交通")
+							| 物流交通
+						label(style={'margin-left':'5px'})
+							input(type="checkbox",style={'margin-top':'0px','width':'18px','height':'18px'},name="vocation",value="电子信息")
+							| 电子信息
+						label(style={'margin-left':'5px'})
+							input(type="checkbox",style={'margin-top':'0px','width':'18px','height':'18px'},name="vocation",value="租赁和商务服务")
+							| 租赁和商务服务
+						label(style={'margin-left':'5px'})
+							input(type="checkbox",style={'margin-top':'0px','width':'18px','height':'18px'},name="vocation",value="居民服务和其他服务业")
+							| 居民服务和其他服务业
+						label(style={'margin-left':'5px'})
+							input(type="checkbox",style={'margin-top':'0px','width':'18px','height':'18px'},name="vocation",value="教育")
+							| 教育
+						label(style={'margin-left':'5px'})
+							input(type="checkbox",style={'margin-top':'0px','width':'18px','height':'18px'},name="vocation",value="其他")
+							| 其他
+						input#inputVocationOther(type="text",style={'border-bottom':'#666 1px solid','border-left-width':'0px','border-right-width':'0px','border-top-width':'0px','width':'60px'},name="vocationOther",value="#{loan.vocationOther}")
+				h3 信贷记录
+					span.glyphicon.glyphicon-menu-down
+				hr.line
+				.form-group
+					label.col-sm-3.control-label(for="inputBankLoan") 银行贷款（万元）:
+					.col-sm-2
+						input#inputBankLoan.form-control(type="text", name="bankLoan", value="#{loan.bankLoan}")
+					label.col-sm-3.control-label(for="inputBankGuaran") 银行贷款保证方式:
+					.col-sm-2
+						input#inputBankGuaran.form-control(type="text", name="bankGuaran", value="#{loan.bankGuaran}")
+				.form-group
+					label.col-sm-3.control-label(for="inputXiaoeLoan") 小贷公司和民间借款金额（万元）:
+					.col-sm-2
+						input#inputXiaoeLoan.form-control(type="text", name="xiaoeLoan", value="#{loan.xiaoeLoan}")
+					label.col-sm-3.control-label(for="inputXiaoeGuaran") 小贷公司和民间保证方式:
+					.col-sm-2
+						input#inputXiaoeGuaran.form-control(type="text", name="xiaoeGuaran", value="#{loan.xiaoeGuaran}")
+				.form-group
+					label.col-sm-3.control-label(for="inputAssetSituation") 资产情况:
+					.col-sm-7
+						textarea#inputAssetSituation.form-control(name="assetSituation",value="#{loan.assetSituation}") #{loan.assetSituation}
+				.form-group
+					label.col-sm-3.control-label(for="inputAssetRatio") 资产负债率:
+					.col-sm-2
+						input#inputAssetRatio.form-control(type="text", name="assetRatio", value="#{loan.assetRatio}")
+					label.col-sm-3.control-label(for="inputDoctor") 征信记录:
+					.checkbox(style={'margin-left':'800px'})
+						label(style={'margin-left':'16px'})
+							input(type="checkbox",style={'margin-top':'0px','width':'18px','height':'18px'},name="creditRecord",value="正常")
+							| 正常
+						label(style={'margin-left':'10px'})
+							input(type="checkbox",style={'margin-top':'0px','width':'18px','height':'18px'},name="creditRecord",value="逾期")
+							|逾期
+				h3 调查问卷
+					span.glyphicon.glyphicon-menu-down
+				hr.line
+				.form-group
+					label.col-sm-3.control-label 您是通过什么渠道了解到我们的服务的?
+					.checkbox
+						label(style={'margin-left':'16px'})
+							input(type="checkbox",style={'margin-top':'0px','width':'18px','height':'18px'},name="knowUsWays",value="客户经理营销")
+							| 客户经理营销
+						label(style={'margin-left':'10px'})
+							input(type="checkbox",style={'margin-top':'0px','width':'18px','height':'18px'},name="knowUsWays",value="电话营销")
+							|电话营销
+						label(style={'margin-left':'10px'})
+							input(type="checkbox",style={'margin-top':'0px','width':'18px','height':'18px'},name="knowUsWays",value="朋友推荐")
+							|朋友推荐
+						label(style={'margin-left':'10px'})
+							input(type="checkbox",style={'margin-top':'0px','width':'18px','height':'18px'},name="knowUsWays",value="报纸")
+							|报纸
+						label(style={'margin-left':'10px'})
+							input(type="checkbox",style={'margin-top':'0px','width':'18px','height':'18px'},name="knowUsWays",value="主动上门")
+							|主动上门
+						label(style={'margin-left':'10px'})
+							input(type="checkbox",style={'margin-top':'0px','width':'18px','height':'18px'},name="knowUsWays",value="商会推荐")
+							|商会推荐
+						label(style={'margin-left':'10px'})
+							input(type="checkbox",style={'margin-top':'0px','width':'18px','height':'18px'},name="knowUsWays",value="其他")
+							|其他
+						input#inputKnowUsWaysOther(type="text",style={'border-bottom':'#666 1px solid','border-left-width':'0px','border-right-width':'0px','border-top-width':'0px','width':'100px'},name="knowUsWaysOther",value="#{loan.knowUsWaysOther}")
+				hr.line
+				h3 成功申请贷款记录
+					span.glyphicon.glyphicon-menu-down
+				hr.line
+				.form-group
+					label.col-sm-3.control-label(for="inputLendingTime") 放款时间:
+					.col-sm-2
+						input#inputLendingTime.form-control(type="text", name="lendingTime", value="#{loan.lendingTime}")
+					label.col-sm-3.control-label(for="inputLendingQuota") 批款额度:
+					.col-sm-2
+						input#inputLendingQuota.form-control(type="text", name="lendingQuota", value="#{loan.lendingQuota}")
+				.form-group
+					label.col-sm-3.control-label(for="inputLendingSide") 放款方:
+					.col-sm-2
+						input#inputLendingSide.form-control(type="text", name="lendingSide", value="#{loan.lendingSide}")
+					label.col-sm-3.control-label(for="inputcusMger") 客户经理:
+					.col-sm-2
+						input#inputcusMger.form-control(type="text", name="cusMger", value="#{loan.cusMger}")
+				.form-group
+					label.col-sm-3.control-label(for="inputComment") 备注:
+					.col-sm-7
+						textarea#inputComment.form-control(name="comment",value="#{loan.comment}") #{loan.comment}
+				.form-group
+					.col-sm-offset-2.col-sm-10
+					button.btn.btn-info.btn-lg(type="submit") 保存信息
+	script(src='/js/loanIn.js')
